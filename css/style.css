@@ -1,0 +1,80 @@
+/* font-family: 'Oswald', sans-serif; */
+
+body {
+       /* background: linear-gradient(135deg, rgb(30, 179, 243) 1%, rgb(238, 169, 65)); */
+       background-image: linear-gradient(to bottom, #d8e9ec, #b3d3eb, #90c2ec, #c2d5e6, #cbebee);
+       font-family: 'Oswald', sans-serif;
+}
+
+h1,h4 {
+       font-size: 2rem;
+}
+
+ul {
+       list-style-type: none;
+}
+
+a {
+       text-decoration: none;
+}
+
+.card {
+       background-image: linear-gradient(rgb(84, 240, 224), rgb(52, 177, 245), rgb(138, 204, 245));
+       /* box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;        */
+       box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.icons a:hover {
+       transform: scale(1.5);
+}
+
+footer, nav {
+       box-shadow: rgba(0, 0, 0, 0.218) 0px 2px 2px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+li>a {
+       background-image: linear-gradient(
+         to right,
+         rgb(220, 25, 178),
+         #1d1e1c 50%,
+         rgb(44, 27, 27) 50%
+       );
+       background-size: 200% 100%;
+       background-position: -100%;
+       display: inline-block;
+       padding: 5px 0;
+       position: relative;
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       transition: all 0.3s ease-in-out;
+     }
+     
+li>a:before {
+       content: '';
+       background-image: linear-gradient(
+         to right,
+         rgb(82, 30, 212),
+         #54b3d6 50%,
+         rgb(0, 174, 255)
+
+       );
+       display: block;
+       position: absolute;
+       bottom: -3px;
+       left: 0;
+       width: 0;
+       height: 3px;
+       transition: all 0.3s ease-in-out;
+}
+
+li>a:hover {
+      background-position: 0;
+}
+     
+li>a:hover::before{
+       width: 100%;
+}
+
+.block-page-btn>a {
+       box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}

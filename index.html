@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Twitter Clone</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg bg-info bg-opacity-50 mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"
+                    ><i class="bi bi-twitter"></i> Twitter</a
+                >
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Переключатель навигации"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                >
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="./index.html"
+                                >Home</a
+                            >
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                                id="registerUser-modal"
+                                data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop"
+                                >Register</a
+                            >
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                                id="loginUser-modal"
+                                data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop"
+                                >Login</a
+                            >
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                                id="logoutUser-btn"
+                                >Logout</a
+                            >
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled" id="showUsername"
+                                >No user</a
+                            >
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active user-panel"
+                                aria-current="page"
+                                href="#"
+                                id="create-post-btn"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                                >Create post</a
+                            >
+                        </li>
+                    </ul>
+
+                    <form class="d-flex" role="search">
+                        <input
+                            class="form-control me-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Поиск"
+                            id="search-inp"
+                        />
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- content -->
+        <div
+            class="d-flex flex-wrap justify-content-center"
+            id="posts-list"
+        ></div>
+
+        <!-- pagination -->
+        <div class="d-flex w-100 justify-content-center block-page-btn mb-4">
+            <a
+                class="btn bg-info m-1"
+                href="#"
+                aria-label="Previous"
+                id="prev-page-btn"
+            >
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+            <a
+                class="btn bg-info m-1"
+                href="#"
+                aria-label="Next"
+                id="next-page-btn"
+            >
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </div>
+
+        <!-- modal for users -->
+        <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            Account
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Закрыть"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- for register -->
+                        <div
+                            class="d-flex flex-column w-100 align-items-center"
+                            id="registerUser-block"
+                        >
+                            <h2>Register User</h2>
+                            <input
+                                type="text"
+                                id="reg-username"
+                                placeholder="Username"
+                                class="mb-2 w-100 form-control"
+                            />
+                            <input
+                                type="number"
+                                id="reg-number"
+                                placeholder="Phone number"
+                                class="mb-2 w-100 form-control"
+                            />
+                            <input
+                                type="number"
+                                id="reg-age"
+                                placeholder="Age"
+                                class="mb-2 w-100 form-control"
+                            />
+                            <input
+                                type="text"
+                                id="reg-password"
+                                placeholder="Password"
+                                class="mb-2 w-100 form-control"
+                            />
+                            <input
+                                type="text"
+                                id="reg-passwordConfirm"
+                                placeholder="Password Confirmation"
+                                class="mb-2 w-100 form-control"
+                            />
+                        </div>
+
+                        <!-- for login -->
+                        <div
+                            class="d-flex flex-column w-100 align-items-center"
+                            id="loginUser-block"
+                        >
+                            <h2>Login User</h2>
+                            <input
+                                type="text"
+                                id="login-username"
+                                placeholder="Username"
+                                class="mb-2 w-100 form-control"
+                            />
+                            <input
+                                type="text"
+                                id="login-password"
+                                placeholder="Password"
+                                class="mb-2 w-100 form-control"
+                            />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-dark"
+                            id="registerUser-btn"
+                        >
+                            Register
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-dark"
+                            id="loginUser-btn"
+                        >
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal create post -->
+        <div
+            class="modal fade user-panel"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            User panel
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            id="btn-close-create-post"
+                            data-bs-dismiss="modal"
+                            aria-label="Закрыть"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label
+                                    for="exampleInputEmail1"
+                                    class="form-label"
+                                    >Title post</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="post-title"
+                                    aria-describedby="emailHelp"
+                                    placeholder="Enter title post ..."
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="exampleInputPassword1"
+                                    class="form-label"
+                                    >URL image</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="post-image"
+                                    aria-describedby="emailHelp"
+                                    placeholder="Enter URL image ..."
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="exampleInputPassword1"
+                                    class="form-label"
+                                    >Description</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="post-desc"
+                                    aria-describedby="emailHelp"
+                                    placeholder="Enter some description ..."
+                                />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark w-50 m-auto add-post-btn">
+                            Add post
+                        </button>
+                        <button
+                            class="btn btn-dark w-50 m-auto save-changes-btn"
+                        >
+                            Save post
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-info bg-opacity-50 text-center text-dark mt-2">
+            <!-- Grid container -->
+            <div class="container p-4">
+                <!-- Section: Form -->
+                <section class="">
+                    <form action="">
+                        <!--Grid row-->
+                        <div class="row d-flex justify-content-center"></div>
+                        <!--Grid row-->
+                    </form>
+                </section>
+
+                <!-- Section: Form -->
+                <!-- Section: Text & Icons -->
+                <div class="icons">
+                    <ul class="d-flex w-100 m-auto justify-content-center">
+                        <li>
+                            <a href="#" class="me-4 text-reset">
+                                <i class="bi bi-facebook icons"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="me-4 text-reset">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="me-4 text-reset">
+                                <i class="bi bi-google"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="me-4 text-reset">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="me-4 text-reset">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://github.com/Zefear96"
+                                class="me-4 text-reset icons"
+                                target="_blank"
+                            >
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div
+                class="text-center p-3"
+                style="background-color: rgba(0, 0, 0, 0.2)"
+            >
+                © 2023 Copyright:
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./js/main.js"></script>
+    </body>
+</html>
