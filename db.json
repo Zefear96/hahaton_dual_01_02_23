@@ -16,17 +16,6 @@
           },
           "image": "https://avatars.mds.yandex.net/i?id=53dcf8c67804450e70356e1420156fb4ad29315d-8264209-images-thumbs&n=13",
           "likes": 44
-        },
-        {
-          "title": "ASafdreg",
-          "desc": "argatgbs ",
-          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsugK3SsLOhSQo-L22bOTVapa8az3GKk2P_w&usqp=CAU",
-          "author": {
-            "name": "Qwas",
-            "id": 1
-          },
-          "likes": 7,
-          "id": 3
         }
       ],
       "id": 1
@@ -63,7 +52,7 @@
         "name": "Qwas",
         "id": 1
       },
-      "likes": 7,
+      "likes": 6,
       "id": 3
     },
     {
